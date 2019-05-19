@@ -1,0 +1,22 @@
+server:
+  port: 0
+  servlet:
+    context-path: /triangulum
+
+  ####Jetty specific properties########
+  jetty:
+    max-http-post-size: 0
+
+spring:
+  jackson:
+    default-property-inclusion: NON_NULL
+
+
+path:
+  upload: /Users/chengweiou/Desktop/project/triangulum
+
+upload:
+  path: /Users/chengweiou/Desktop/project/triangulum
+  categoryList:
+    - weather
+    - pet

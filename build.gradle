@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.0.M1'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'chengweiou.universe'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	maven {
+		url 'http://127.0.0.1:8001/repository/chengweiou/'
+		credentials {
+			username 'admin'
+			password 'admin123'
+		}
+	}
+	mavenCentral()
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	implementation 'net.coobird:thumbnailator:0.4.8'
+
+	implementation 'chengweiou.universe:blackhole:0.0.10@jar'
+	implementation 'com.google.code.gson:gson:2.8.5'
+	implementation 'org.apache.commons:commons-lang3:3.9'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jetty'
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+	testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'junit', module: 'junit'
+	}
+}
+
+configurations {
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+	implementation.exclude module: 'spring-boot-starter-tomcat'
+}

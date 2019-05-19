@@ -1,0 +1,5 @@
+upload:
+  path: /Users/chengweiou/Desktop/project/triangulum
+  categoryList:
+    - weather
+    - pet

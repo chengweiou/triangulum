@@ -2,10 +2,11 @@ package chengweiou.universe.triangulum.service.impl;
 
 
 import chengweiou.universe.blackhole.util.LogUtil;
+import chengweiou.universe.triangulum.init.upload.UploadConfig;
 import chengweiou.universe.triangulum.model.ImagePlan;
 import chengweiou.universe.triangulum.service.ImagePlanService;
 import net.coobird.thumbnailator.Thumbnails;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -17,14 +18,14 @@ import java.util.Base64;
 
 @Service
 public class ImagePlanServiceImpl implements ImagePlanService {
-    @Value("${upload.path}")
-    private String uploadPath;
+    @Autowired
+    private UploadConfig config;
 
     @Override
     public void save(ImagePlan e) {
         e.fillNotRequire();
         boolean compress = e.getW() > 0;
-        String filename = uploadPath + (compress ? e.path().getFilepathBig() : e.path().getFilepath()) + e.path().getFile();
+        String filename = config.getPath() + (compress ? e.path().getFilepathBig() : e.path().getFilepath()) + e.path().getFile();
         String filepath = filename.substring(0, filename.lastIndexOf("/"));
         try {
             Files.createDirectories(Path.of(filepath));
@@ -39,7 +40,7 @@ public class ImagePlanServiceImpl implements ImagePlanService {
         }
         if (compress) {
             try {
-                Thumbnails.of(new File(filename)).size(e.getW(), e.getW()).toFile(uploadPath + e.path().getFilepath() + e.path().getFile());
+                Thumbnails.of(new File(filename)).size(e.getW(), e.getW()).toFile(config.getPath() + e.path().getFilepath() + e.path().getFile());
             } catch (IOException ex) {
                 LogUtil.e("file compress create fail, url: " + e.path().getFilepath() + e.path().getFile(), ex);
             }

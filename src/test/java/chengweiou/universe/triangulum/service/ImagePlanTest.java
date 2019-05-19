@@ -2,11 +2,11 @@ package chengweiou.universe.triangulum.service;
 
 
 import chengweiou.universe.blackhole.model.Builder;
+import chengweiou.universe.triangulum.init.upload.UploadConfig;
 import chengweiou.universe.triangulum.model.ImagePlan;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -17,15 +17,15 @@ import java.io.File;
 public class ImagePlanTest {
 	@Autowired
 	private ImagePlanService service;
-	@Value("${path.upload}")
-	private String uploadPath;
+	@Autowired
+	private UploadConfig config;
 
 	@Test
 	public void saveDelete() {
 		ImagePlan e = Builder.set("base64", "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=").to(new ImagePlan());
 		service.save(e);
-		Assertions.assertEquals(true, new File(uploadPath + e.path().getFilepath() + e.path().getFile()).exists());
-		new File(uploadPath + e.path().getFilepath() + e.path().getFile()).delete();
+		Assertions.assertEquals(true, new File(config.getPath() + e.path().getFilepath() + e.path().getFile()).exists());
+		new File(config.getPath() + e.path().getFilepath() + e.path().getFile()).delete();
 	}
 
 	@Test
@@ -35,9 +35,9 @@ public class ImagePlanTest {
 				.to(new ImagePlan());
 		service.save(e);
 		Assertions.assertEquals(true, e.path().getFrontend().contains("/aaa.gif"));
-		Assertions.assertEquals(true, new File(uploadPath + e.path().getFilepath() + e.path().getFile()).exists());
-		Assertions.assertEquals(true, !new File(uploadPath + e.path().getFilepathBig() + e.path().getFile()).exists());
-		new File(uploadPath + e.path().getFilepath() + e.path().getFile()).delete();
+		Assertions.assertEquals(true, new File(config.getPath() + e.path().getFilepath() + e.path().getFile()).exists());
+		Assertions.assertEquals(true, !new File(config.getPath() + e.path().getFilepathBig() + e.path().getFile()).exists());
+		new File(config.getPath() + e.path().getFilepath() + e.path().getFile()).delete();
 	}
 
 	@Test
@@ -46,10 +46,10 @@ public class ImagePlanTest {
 				.set("w", 50)
 				.to(new ImagePlan());
 		service.save(e);
-		Assertions.assertEquals(true, new File(uploadPath + e.path().getFilepath() + e.path().getFile()).exists());
-		Assertions.assertEquals(true, new File(uploadPath + e.path().getFilepathBig() + e.path().getFile()).exists());
-		new File(uploadPath + e.path().getFilepath() + e.path().getFile()).delete();
-		new File(uploadPath + e.path().getFilepathBig() + e.path().getFile()).delete();
+		Assertions.assertEquals(true, new File(config.getPath() + e.path().getFilepath() + e.path().getFile()).exists());
+		Assertions.assertEquals(true, new File(config.getPath() + e.path().getFilepathBig() + e.path().getFile()).exists());
+		new File(config.getPath() + e.path().getFilepath() + e.path().getFile()).delete();
+		new File(config.getPath() + e.path().getFilepathBig() + e.path().getFile()).delete();
 	}
 	@Test
 	public void saveBySingle() {
@@ -58,8 +58,8 @@ public class ImagePlanTest {
 				.set("single", true)
 				.to(new ImagePlan());
 		service.save(e);
-		Assertions.assertEquals(true, new File(uploadPath + e.path().getFilepath() + e.path().getFile()).exists());
-		Assertions.assertEquals(true, !new File(uploadPath + e.path().getFilepathBig() + e.path().getFile()).exists());
-		new File(uploadPath + e.path().getFilepath() + e.path().getFile()).delete();
+		Assertions.assertEquals(true, new File(config.getPath() + e.path().getFilepath() + e.path().getFile()).exists());
+		Assertions.assertEquals(true, !new File(config.getPath() + e.path().getFilepathBig() + e.path().getFile()).exists());
+		new File(config.getPath() + e.path().getFilepath() + e.path().getFile()).delete();
 	}
 }

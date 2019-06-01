@@ -3,11 +3,11 @@ package chengweiou.universe.triangulum.controller.all;
 
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.triangulum.init.upload.UploadConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,8 +23,8 @@ public class ImagePlanTest {
 	private MockMvc mvc;
 	@Autowired
 	private WebApplicationContext webApplicationContext;
-	@Value("${path.upload}")
-	private String uploadPath;
+	@Autowired
+	private UploadConfig config;
 
 	@Test
 	public void image() throws Exception {
@@ -35,10 +35,10 @@ public class ImagePlanTest {
 		Rest<String> rest = Rest.from(result);
 		Assertions.assertEquals(BasicRestCode.OK, rest.getCode());
 		Assertions.assertEquals(true, rest.getData().length() > 3);
-		new File(uploadPath + rest.getData().substring(0, rest.getData().indexOf("?"))).delete();
+		new File(config.getPath() + rest.getData().substring(0, rest.getData().indexOf("?"))).delete();
 		String big = rest.getData().substring(0, rest.getData().lastIndexOf("/"))
 				+ "/big" + rest.getData().substring(rest.getData().lastIndexOf("/"), rest.getData().indexOf("?"));
-		new File(uploadPath + big).delete();
+		new File(config.getPath() + big).delete();
 	}
 
 	@Test

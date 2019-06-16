@@ -11,10 +11,6 @@ spring:
   jackson:
     default-property-inclusion: NON_NULL
 
-
-path:
-  upload: /Users/chengweiou/Desktop/project/triangulum
-
 upload:
   path: /Users/chengweiou/Desktop/project/triangulum
   categoryList:

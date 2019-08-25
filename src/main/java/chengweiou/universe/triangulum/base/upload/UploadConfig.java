@@ -1,12 +1,10 @@
-package chengweiou.universe.triangulum.init.upload;
+package chengweiou.universe.triangulum.base.upload;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 @ConfigurationProperties(prefix = "upload")
 public class UploadConfig {
     private String path;

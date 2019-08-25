@@ -1,10 +1,9 @@
-package chengweiou.universe.triangulum.service.impl;
+package chengweiou.universe.triangulum.service;
 
 
 import chengweiou.universe.blackhole.util.LogUtil;
-import chengweiou.universe.triangulum.init.upload.UploadConfig;
+import chengweiou.universe.triangulum.base.upload.UploadConfig;
 import chengweiou.universe.triangulum.model.ImagePlan;
-import chengweiou.universe.triangulum.service.ImagePlanService;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

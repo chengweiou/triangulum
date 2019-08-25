@@ -1,4 +1,5 @@
-package chengweiou.universe.triangulum.init.converter;
+package chengweiou.universe.triangulum.base.converter;
+
 
 import com.google.gson.Gson;
 import org.springframework.core.convert.converter.Converter;

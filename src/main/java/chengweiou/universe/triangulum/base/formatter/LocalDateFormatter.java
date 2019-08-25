@@ -1,4 +1,4 @@
-package chengweiou.universe.triangulum.init.formatter;
+package chengweiou.universe.triangulum.base.formatter;
 
 import org.springframework.format.Formatter;
 

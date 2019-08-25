@@ -3,7 +3,7 @@ package chengweiou.universe.triangulum.controller.all;
 
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.triangulum.init.upload.UploadConfig;
+import chengweiou.universe.triangulum.base.upload.UploadConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

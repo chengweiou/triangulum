@@ -2,12 +2,16 @@ package chengweiou.universe.triangulum.model;
 
 import chengweiou.universe.blackhole.model.NotNullObj;
 import chengweiou.universe.blackhole.model.NullObj;
+import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
+@Data
 public class ImagePlan implements NotNullObj, Serializable {
     // file
     private String base64;
@@ -66,6 +70,8 @@ public class ImagePlan implements NotNullObj, Serializable {
     public static class Null extends ImagePlan implements NullObj {
     }
 
+    @Getter
+    @ToString
     public static class Path {
         private String frontend;
         private String filepath;
@@ -77,92 +83,5 @@ public class ImagePlan implements NotNullObj, Serializable {
             this.file = filename;
             this.frontend = frontendUrl;
         }
-
-        public String getFrontend() {
-            return frontend;
-        }
-
-        public String getFilepath() {
-            return filepath;
-        }
-
-        public String getFilepathBig() {
-            return filepathBig;
-        }
-
-        public String getFile() {
-            return file;
-        }
-
-        @Override
-        public String toString() {
-            return "Path{" +
-                    "frontend='" + frontend + '\'' +
-                    ", filepath='" + filepath + '\'' +
-                    ", filepathBig='" + filepathBig + '\'' +
-                    ", file='" + file + '\'' +
-                    '}';
-        }
-    }
-    public String getBase64() {
-        return base64;
-    }
-
-    @Override
-    public String toString() {
-        return "ImagePlan{" +
-                "base64='" + base64 + '\'' +
-                ", owner='" + owner + '\'' +
-                ", category='" + category + '\'' +
-                ", nameWithoutType='" + nameWithoutType + '\'' +
-                ", w=" + w +
-                ", single=" + single +
-                ", path=" + path +
-                ", base64Value='" + base64Value + '\'' +
-                '}';
-    }
-
-    public void setBase64(String base64) {
-        this.base64 = base64;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getNameWithoutType() {
-        return nameWithoutType;
-    }
-
-    public void setNameWithoutType(String nameWithoutType) {
-        this.nameWithoutType = nameWithoutType;
-    }
-
-    public Integer getW() {
-        return w;
-    }
-
-    public void setW(Integer w) {
-        this.w = w;
-    }
-
-    public Boolean getSingle() {
-        return single;
-    }
-
-    public void setSingle(Boolean single) {
-        this.single = single;
     }
 }

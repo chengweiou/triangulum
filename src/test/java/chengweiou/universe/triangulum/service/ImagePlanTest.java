@@ -2,7 +2,7 @@ package chengweiou.universe.triangulum.service;
 
 
 import chengweiou.universe.blackhole.model.Builder;
-import chengweiou.universe.triangulum.init.upload.UploadConfig;
+import chengweiou.universe.triangulum.base.upload.UploadConfig;
 import chengweiou.universe.triangulum.model.ImagePlan;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,6 +20,7 @@ public class ImagePlanTest {
 	@Autowired
 	private UploadConfig config;
 
+	// todo new service to save audio, file
 	@Test
 	public void saveDelete() {
 		ImagePlan e = Builder.set("base64", "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=").to(new ImagePlan());

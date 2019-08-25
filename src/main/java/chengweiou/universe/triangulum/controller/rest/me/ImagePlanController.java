@@ -4,8 +4,8 @@ package chengweiou.universe.triangulum.controller.rest.me;
 import chengweiou.universe.blackhole.exception.ParamException;
 import chengweiou.universe.blackhole.model.Rest;
 import chengweiou.universe.blackhole.param.Valid;
-import chengweiou.universe.triangulum.init.converter.Account;
-import chengweiou.universe.triangulum.init.upload.UploadConfig;
+import chengweiou.universe.triangulum.base.converter.Account;
+import chengweiou.universe.triangulum.base.upload.UploadConfig;
 import chengweiou.universe.triangulum.model.ImagePlan;
 import chengweiou.universe.triangulum.service.ImagePlanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class ImagePlanController {
     private UploadConfig config;
 
     @PostMapping("/me/image")
-    public Rest<String> image(ImagePlan e, @RequestHeader("loginAccount")Account loginAccount) throws ParamException {
+    public Rest<String> image(ImagePlan e, @RequestHeader("loginAccount") Account loginAccount) throws ParamException {
         Valid.check("loginAccount.person", loginAccount.getPerson()).isNotNull();
         Valid.check("loginAccount.person.id", loginAccount.getPerson().getId()).is().positive();
         Valid.check("image.base64", e.getBase64()).is().lengthIn(10, -1).include("data:image/", ";base64,");

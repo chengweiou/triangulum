@@ -35,7 +35,7 @@ public class FilePlan implements NotNullObj, Serializable {
     private Path path;
     public Path path() {
         if (path != null) return path;
-        String type = file.getOriginalFilename().substring(file.getName().lastIndexOf(".")+1);
+        String type = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1);
         String file = nameWithoutType + "." + type;
         String filepath = "/upload" + (!owner.isBlank() ? ("/person/" + owner) : "" ) + "/" + category + "/";
         String frontend = filepath + nameWithoutType + "." + type + "?" + file.length();

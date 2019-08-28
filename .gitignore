@@ -1,9 +1,11 @@
 HELP.md
-.gradle/
-/build/
-/out/
+.gradle
+build/
+upload/
 /logs/
 !gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
 
 ### STS ###
 .apt_generated
@@ -15,11 +17,11 @@ HELP.md
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea/
+.idea
 *.iws
 *.iml
 *.ipr
-/out/
+out/
 
 ### NetBeans ###
 /nbproject/private/

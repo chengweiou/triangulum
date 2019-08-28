@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 public class FilePlanServiceImpl implements FilePlanService {
@@ -28,6 +29,7 @@ public class FilePlanServiceImpl implements FilePlanService {
             LogUtil.e("file dirs create fail, url: " + filepath, ex);
         }
         try {
+            Files.createFile(Paths.get(filename));
             e.getFile().transferTo(new File(filename));
         } catch (IOException ex) {
             LogUtil.e("file create fail, url: " + filename, ex);

@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.0.M5'
+	id 'org.springframework.boot' version '2.2.0.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
 }
@@ -34,8 +34,8 @@ repositories {
 
 dependencies {
 	implementation 'net.coobird:thumbnailator:0.4.8'
-	
-	implementation 'chengweiou.universe:blackhole:0.0.16@jar'
+
+	implementation 'chengweiou.universe:blackhole:0.0.22@jar'
 	implementation 'com.google.code.gson:gson:2.8.5'
 	implementation 'org.apache.commons:commons-lang3:3.9'
 
@@ -43,7 +43,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jetty'
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'

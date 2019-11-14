@@ -11,6 +11,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 @Profile("!prod")
 @RestControllerAdvice
@@ -49,6 +50,12 @@ public class GlobalExceptionHandlerDebug {
     @ExceptionHandler(Exception.class)
     public Rest handleException(Exception ex) {
         Rest rest = Rest.fail(BasicRestCode.FAIL);
+        rest.setMessage(ex.getMessage());
+        return rest;
+    }
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public Rest handleParamException(NoHandlerFoundException ex) {
+        Rest rest = Rest.fail(BasicRestCode.PARAM);
         rest.setMessage(ex.getMessage());
         return rest;
     }

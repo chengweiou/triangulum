@@ -7,8 +7,8 @@ import chengweiou.universe.triangulum.model.FilePlan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,8 +29,9 @@ public class FilePlanServiceImpl implements FilePlanService {
             LogUtil.e("file dirs create fail, url: " + filepath, ex);
         }
         try {
-            Files.createFile(Paths.get(filename));
-            e.getFile().transferTo(new File(filename));
+            if (Files.notExists(Paths.get(filename))) Files.createFile(Paths.get(filename));
+            e.getFile().transferTo(Paths.get(filename));
+        } catch (FileAlreadyExistsException ex) {
         } catch (IOException ex) {
             LogUtil.e("file create fail, url: " + filename, ex);
         }

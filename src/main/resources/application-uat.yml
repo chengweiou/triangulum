@@ -3,10 +3,6 @@ server:
   servlet:
     context-path: /triangulum
 
-  ####Jetty specific properties########
-  jetty:
-    max-http-post-size: 0
-
 spring:
   jackson:
     default-property-inclusion: NON_NULL

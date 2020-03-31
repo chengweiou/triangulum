@@ -6,12 +6,12 @@ import chengweiou.universe.blackhole.exception.ParamException;
 import chengweiou.universe.blackhole.exception.ProjException;
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.blackhole.util.LogUtil;
 import org.springframework.context.annotation.Profile;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
 @Profile("prod")
 @RestControllerAdvice
@@ -35,14 +35,14 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(FailException.class)
     public Rest handleFailException(FailException ex) {
-        return Rest.fail(BasicRestCode.FAIL);
+        Rest rest = Rest.fail(BasicRestCode.FAIL);
+        LogUtil.i(rest.toString(), ex);
+        return rest;
     }
     @ExceptionHandler(Exception.class)
     public Rest handleException(Exception ex) {
-        return Rest.fail(BasicRestCode.FAIL);
-    }
-    @ExceptionHandler(NoHandlerFoundException.class)
-    public Rest handleParamException(NoHandlerFoundException ex) {
-        return Rest.fail(BasicRestCode.PARAM);
+        Rest rest = Rest.fail(BasicRestCode.FAIL);
+        LogUtil.e(rest.toString(), ex);
+        return rest;
     }
 }

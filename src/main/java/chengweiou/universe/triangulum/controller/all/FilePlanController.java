@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import chengweiou.universe.blackhole.exception.ParamException;
 import chengweiou.universe.blackhole.model.Rest;
 import chengweiou.universe.blackhole.param.Valid;
-import chengweiou.universe.triangulum.base.upload.UploadConfig;
+import chengweiou.universe.triangulum.base.config.ProjConfig;
 import chengweiou.universe.triangulum.model.FilePlan;
 import chengweiou.universe.triangulum.service.FilePlanService;
 
@@ -17,7 +17,7 @@ public class FilePlanController {
     @Autowired
     private FilePlanService service;
     @Autowired
-    private UploadConfig config;
+    private ProjConfig config;
     @PostMapping("/file")
     public Rest<String> file(FilePlan e) throws ParamException {
         Valid.check("file", e.getFile().getSize()).is().positive();

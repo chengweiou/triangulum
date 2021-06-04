@@ -1,16 +1,17 @@
 package chengweiou.universe.triangulum.service;
 
 
-import chengweiou.universe.blackhole.model.Builder;
-import chengweiou.universe.triangulum.base.upload.UploadConfig;
-import chengweiou.universe.triangulum.model.ImagePlan;
+import java.io.File;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.io.File;
+import chengweiou.universe.blackhole.model.Builder;
+import chengweiou.universe.triangulum.base.config.ProjConfig;
+import chengweiou.universe.triangulum.model.ImagePlan;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -18,7 +19,7 @@ public class ImagePlanTest {
 	@Autowired
 	private ImagePlanService service;
 	@Autowired
-	private UploadConfig config;
+	private ProjConfig config;
 
 	// todo new service to save audio, file
 	@Test

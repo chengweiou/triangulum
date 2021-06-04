@@ -1,18 +1,19 @@
 package chengweiou.universe.triangulum.controller.me;
 
 
-import chengweiou.universe.blackhole.exception.ParamException;
-import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.blackhole.param.Valid;
-import chengweiou.universe.triangulum.base.converter.Account;
-import chengweiou.universe.triangulum.base.upload.UploadConfig;
-import chengweiou.universe.triangulum.model.ImagePlan;
-import chengweiou.universe.triangulum.service.ImagePlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import chengweiou.universe.blackhole.exception.ParamException;
+import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.blackhole.param.Valid;
+import chengweiou.universe.triangulum.base.config.ProjConfig;
+import chengweiou.universe.triangulum.base.converter.Account;
+import chengweiou.universe.triangulum.model.ImagePlan;
+import chengweiou.universe.triangulum.service.ImagePlanService;
 
 @RestController("meImagePlanController")
 @RequestMapping("me")
@@ -20,7 +21,7 @@ public class ImagePlanController {
     @Autowired
     private ImagePlanService service;
     @Autowired
-    private UploadConfig config;
+    private ProjConfig config;
 
     @PostMapping("/image")
     public Rest<String> image(ImagePlan e, @RequestHeader("loginAccount") Account loginAccount) throws ParamException {

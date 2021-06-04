@@ -1,9 +1,8 @@
 package chengweiou.universe.triangulum.controller.all;
 
 
-import chengweiou.universe.blackhole.model.BasicRestCode;
-import chengweiou.universe.blackhole.model.Rest;
-import chengweiou.universe.triangulum.base.upload.UploadConfig;
+import java.io.File;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.io.File;
+import chengweiou.universe.blackhole.model.BasicRestCode;
+import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.triangulum.base.config.ProjConfig;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -24,7 +25,7 @@ public class ImagePlanTest {
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 	@Autowired
-	private UploadConfig config;
+	private ProjConfig config;
 
 	@Test
 	public void image() throws Exception {

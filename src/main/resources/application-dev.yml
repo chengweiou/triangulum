@@ -7,7 +7,7 @@ spring:
   jackson:
     default-property-inclusion: NON_NULL
 
-upload: 
+proj: 
   path: /Users/chengweiou/Desktop/project/universe/triangulum
   categoryList: 
     - weather

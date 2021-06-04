@@ -1,22 +1,23 @@
 package chengweiou.universe.triangulum.service;
 
 
-import chengweiou.universe.blackhole.util.LogUtil;
-import chengweiou.universe.triangulum.base.upload.UploadConfig;
-import chengweiou.universe.triangulum.model.FilePlan;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import chengweiou.universe.blackhole.util.LogUtil;
+import chengweiou.universe.triangulum.base.config.ProjConfig;
+import chengweiou.universe.triangulum.model.FilePlan;
+
 @Service
 public class FilePlanServiceImpl implements FilePlanService {
     @Autowired
-    private UploadConfig config;
+    private ProjConfig config;
 
     @Override
     public void save(FilePlan e) {

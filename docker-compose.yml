@@ -1,0 +1,11 @@
+services:
+  triangulum:
+    container_name: triangulum
+    ports: 
+      - 60003:8906
+    volumes: 
+      - ~/Desktop/docker/universe/triangulum:/proj
+    working_dir: /proj/
+    image: openjdk
+    command: java -jar ser.jar --spring.config.location=optional:classpath:/,optional:classpath:/config/,optional:file:./,optional:file:./config/
+

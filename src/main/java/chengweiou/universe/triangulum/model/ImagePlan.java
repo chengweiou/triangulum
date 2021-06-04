@@ -57,6 +57,7 @@ public class ImagePlan implements NotNullObj, Serializable {
     private String base64Value;
     public String getBase64Value() {
         base64Value = base64Value != null ? base64Value : base64.substring(base64.indexOf(";base64,") + ";base64,".length());
+        base64Value = base64Value.replaceAll(" ", "+");
         return base64Value;
     }
     public void fillNotRequire() {

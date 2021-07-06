@@ -3,8 +3,6 @@ package chengweiou.universe.triangulum.controller.me;
 
 import java.io.File;
 
-import com.google.gson.Gson;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Builder;
 import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.blackhole.util.GsonUtil;
 import chengweiou.universe.triangulum.base.config.ProjConfig;
 import chengweiou.universe.triangulum.base.converter.Account;
 import chengweiou.universe.triangulum.base.converter.Person;
@@ -36,7 +35,7 @@ public class ImagePlanTest {
 	@Test
 	public void image() throws Exception {
 		String result = mvc.perform(MockMvcRequestBuilders.post("/me/image")
-				.header("loginAccount", new Gson().toJson(loginAccount))
+				.header("loginAccount", GsonUtil.create().toJson(loginAccount))
 				.param("base64", "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=")
 				.param("nameWithoutType", "abc").param("w", "100")
 			).andReturn().getResponse().getContentAsString();
@@ -52,7 +51,7 @@ public class ImagePlanTest {
 	@Test
 	public void imageWithCategory() throws Exception {
 		String result = mvc.perform(MockMvcRequestBuilders.post("/me/image")
-				.header("loginAccount", new Gson().toJson(loginAccount))
+				.header("loginAccount", GsonUtil.create().toJson(loginAccount))
 				.param("base64", "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=")
 				.param("nameWithoutType", "abc").param("category", "pet")
 		).andReturn().getResponse().getContentAsString();

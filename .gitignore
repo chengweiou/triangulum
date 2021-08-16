@@ -1,8 +1,8 @@
-/upload/
+upload/
+
 HELP.md
 .gradle
 build/
-upload/
 logs/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**

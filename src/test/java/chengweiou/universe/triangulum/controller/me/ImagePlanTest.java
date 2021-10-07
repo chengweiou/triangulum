@@ -17,6 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 import chengweiou.universe.blackhole.model.BasicRestCode;
 import chengweiou.universe.blackhole.model.Builder;
 import chengweiou.universe.blackhole.model.Rest;
+import chengweiou.universe.blackhole.param.Valid;
 import chengweiou.universe.blackhole.util.GsonUtil;
 import chengweiou.universe.triangulum.base.config.ProjConfig;
 import chengweiou.universe.triangulum.base.converter.Account;
@@ -67,13 +68,20 @@ public class ImagePlanTest {
 	@Test
 	public void imageFail() throws Exception {
 		// base64 missing
-		String result = mvc.perform(MockMvcRequestBuilders.post("/me/image")
+		String result = mvc.perform(MockMvcRequestBuilders.post("/me/image").header("loginAccount", GsonUtil.create().toJson(loginAccount))
 				.param("nameWithoutType", "abc").param("w", "100")
 		).andReturn().getResponse().getContentAsString();
 		Rest<String> rest = Rest.from(result);
 		Assertions.assertEquals(BasicRestCode.PARAM, rest.getCode());
+		// base64 without base64 start
+		result = mvc.perform(MockMvcRequestBuilders.post("/me/image").header("loginAccount", GsonUtil.create().toJson(loginAccount))
+		.param("base64", "/9j/4QG2RXhpZgAATU0AKgAAAAgABwEQAAIAAAAaAAAAYgEAAAQA")
+				.param("nameWithoutType", "abc").param("w", "100")
+		).andReturn().getResponse().getContentAsString();
+		rest = Rest.from(result);
+		Assertions.assertEquals(BasicRestCode.UNAUTH, rest.getCode(), rest.getMessage());
 		// category out of list
-		result = mvc.perform(MockMvcRequestBuilders.post("/me/image")
+		result = mvc.perform(MockMvcRequestBuilders.post("/me/image").header("loginAccount", GsonUtil.create().toJson(loginAccount))
 				.param("base64", "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=")
 				.param("nameWithoutType", "abc").param("category", "abcd").param("w", "100")
 		).andReturn().getResponse().getContentAsString();

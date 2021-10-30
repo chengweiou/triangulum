@@ -79,7 +79,7 @@ public class ImagePlanTest {
 				.param("nameWithoutType", "abc").param("w", "100")
 		).andReturn().getResponse().getContentAsString();
 		rest = Rest.from(result);
-		Assertions.assertEquals(BasicRestCode.UNAUTH, rest.getCode(), rest.getMessage());
+		Assertions.assertEquals(BasicRestCode.PARAM, rest.getCode(), rest.getMessage());
 		// category out of list
 		result = mvc.perform(MockMvcRequestBuilders.post("/me/image").header("loginAccount", GsonUtil.create().toJson(loginAccount))
 				.param("base64", "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=")

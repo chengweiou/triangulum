@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.springframework.stereotype.Repository;
 
+import chengweiou.universe.blackhole.dao.BaseDaoImpl;
 import chengweiou.universe.triangulum.base.entity.DtoEntity;
 
 @Repository

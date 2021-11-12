@@ -1,6 +1,7 @@
 package chengweiou.universe.triangulum.base;
 
 
+import chengweiou.universe.triangulum.base.formatter.InstantFormatter;
 import chengweiou.universe.triangulum.base.formatter.LocalDateFormatter;
 import chengweiou.universe.triangulum.base.formatter.LocalDateTimeFormatter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -22,6 +23,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new LocalDateFormatter());
         registry.addFormatter(new LocalDateTimeFormatter());
+        registry.addFormatter(new InstantFormatter());
     }
 
     @Override
